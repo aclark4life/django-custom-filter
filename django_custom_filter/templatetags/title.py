@@ -7,6 +7,7 @@ register = template.Library()
 @register.filter(name='custom_title')
 def custom_title(value):
     """
-    Uppercase first letter, via http://stackoverflow.com/a/13525843
+    Uppercase first letter of each word leaving remaining characters
+    unchanged.
     """
-    return value[0].upper() + value[1:]
+    return [word[0].capitalize() + word[1:] for word in value.split()]
